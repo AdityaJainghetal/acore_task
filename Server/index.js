@@ -37,6 +37,25 @@ app.use(express.json());
 app.use(cookieParser());
 
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://acore-task-kvod.vercel.app"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("CORS blocked: " + origin));
+      }
+    },
+    credentials: true,
+  })
+);
+
+
 connectDB(process.env.MONGO_URI || "mongodb://localhost:27017/realtime_notes");
 
 
