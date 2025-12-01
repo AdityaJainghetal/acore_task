@@ -27,7 +27,6 @@ const io = require("socket.io")(server, {
 
 setupSocket(io);
 
-
 app.use(
   cors({
     origin: process.env.CLIENT_URL || "http://localhost:5173",

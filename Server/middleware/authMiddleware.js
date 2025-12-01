@@ -6,7 +6,7 @@ const verifyAccessToken = async (req, res, next) => {
   if (!authHeader)
     return res.status(401).json({ message: "Authorization header missing" });
 
-  
+
   const parts = authHeader.split(" ").filter(Boolean);
   let token;
 
@@ -17,7 +17,7 @@ const verifyAccessToken = async (req, res, next) => {
         .status(401)
         .json({ message: "Authorization scheme must be Bearer" });
     }
-    token = parts[1];
+    token = parts[1];``
   } else if (parts.length === 1) {
     token = parts[0];
   } else {
