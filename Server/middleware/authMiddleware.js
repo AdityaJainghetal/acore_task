@@ -6,6 +6,7 @@ const verifyAccessToken = async (req, res, next) => {
   if (!authHeader)
     return res.status(401).json({ message: "Authorization header missing" });
 
+  
   const parts = authHeader.split(" ").filter(Boolean);
   let token;
 
