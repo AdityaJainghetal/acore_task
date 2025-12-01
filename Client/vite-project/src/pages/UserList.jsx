@@ -6,12 +6,15 @@ export default function UserList({ users, fetchUsers }) {
   const [editForm, setEditForm] = useState({ name: "", email: "" });
 
   const deleteUser = async (id) => {
-    await axios.delete(`http://localhost:8000/api/users/${id}`);
+    await axios.delete(`https://acore-task.onrender.com/api/users/${id}`);
     fetchUsers();
   };
 
   const updateUser = async (id) => {
-    await axios.put(`http://localhost:8000/api/users/${id}`, editForm);
+    await axios.put(
+      `https://acore-task.onrender.com/api/users/${id}`,
+      editForm
+    );
     setEditId(null);
     fetchUsers();
   };

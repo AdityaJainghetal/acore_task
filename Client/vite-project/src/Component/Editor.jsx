@@ -4,7 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import io from "socket.io-client";
 import API from "../api.js";
 
-const SOCKET_URL = "http://localhost:8000"; 
+const SOCKET_URL = "https://acore-task.onrender.com";
 
 export default function Editor({ user, note, onSaved, onDeleted }) {
   const [content, setContent] = useState("");
@@ -53,7 +53,10 @@ export default function Editor({ user, note, onSaved, onDeleted }) {
     setStatus("Editing");
 
     if (socketRef.current) {
-      socketRef.current.emit("editor-changes", { noteId: note._id, content: value });
+      socketRef.current.emit("editor-changes", {
+        noteId: note._id,
+        content: value,
+      });
     }
 
     if (saveTimeout.current) clearTimeout(saveTimeout.current);
@@ -63,8 +66,14 @@ export default function Editor({ user, note, onSaved, onDeleted }) {
   const saveNote = async (updatedContent) => {
     setStatus("Saving...");
     try {
-      const res = await API.put(`/notes/${note._id}`, { content: updatedContent, title });
-      socketRef.current?.emit("save-note", { noteId: note._id, content: updatedContent });
+      const res = await API.put(`/notes/${note._id}`, {
+        content: updatedContent,
+        title,
+      });
+      socketRef.current?.emit("save-note", {
+        noteId: note._id,
+        content: updatedContent,
+      });
       setStatus("Saved");
       onSaved?.(res.data);
     } catch (err) {
