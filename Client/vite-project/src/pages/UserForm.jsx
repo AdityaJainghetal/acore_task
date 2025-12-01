@@ -6,7 +6,7 @@ export default function UserForm({ fetchUsers }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("https://acore-task.onrender.com/api/users", form);
+    await axios.post("https://acore-task-1.onrender.com/api/users", form);
     fetchUsers();
     setForm({ name: "", email: "" });
   };

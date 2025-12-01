@@ -4,7 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import io from "socket.io-client";
 import API from "../api.js";
 
-const SOCKET_URL = "https://acore-task.onrender.com";
+const SOCKET_URL = "https://acore-task-1.onrender.com";
 
 export default function Editor({ user, note, onSaved, onDeleted }) {
   const [content, setContent] = useState("");

@@ -10,7 +10,7 @@ export default function Register() {
     e.preventDefault();
     try {
       await axios.post(
-        "https://acore-task.onrender.com/api/auth/register",
+        "https://acore-task-1.onrender.com/api/auth/register",
         form
       );
       navigate("/");

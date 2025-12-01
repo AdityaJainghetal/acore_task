@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://acore-task.onrender.com/api",
+  baseURL: "https://acore-task-1.onrender.com/api",
 });
 
 export const setAuthToken = (token) => {

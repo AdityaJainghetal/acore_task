@@ -11,7 +11,7 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "https://acore-task.onrender.com/api/auth/login",
+        "https://acore-task-1.onrender.com/api/auth/login",
         form
       );
       const token = res.data.accessToken;
